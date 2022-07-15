@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="12dp"
+    android:elevation="12dp"
+    android:id="@+id/searchSongRowCardView"
+    app:cardBackgroundColor="@color/primaryTextColor"
+    android:layout_height="58dp">
+
+    <ProgressBar
+        android:id="@+id/songSearchProgress"
+        android:visibility="gone"
+        android:layout_margin="6dp"
+        android:layout_width="46dp"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:id="@+id/searchLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/searchImageButton"
+            android:layout_margin="6dp"
+            android:layout_width="46dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_baseline_play_circle_outline_24"
+            android:contentDescription="@string/content_play" />
+
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/searchTextView"
+            android:layout_margin="4dp"
+            android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_gravity="center_vertical"
+            android:singleLine="true"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:fontFamily="@font/sf_pro"
+            android:textColor="@color/primaryDarkColor"
+            android:layout_height="match_parent"/>
+
+        <ImageButton
+            android:id="@+id/searchArrowButton"
+            android:layout_gravity="center"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:contentDescription="@string/content_rightArrow" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

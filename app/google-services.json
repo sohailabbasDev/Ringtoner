@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "173478409917",
+    "firebase_url": "https://music-test-b2dc0-default-rtdb.firebaseio.com",
+    "project_id": "music-test-b2dc0",
+    "storage_bucket": "music-test-b2dc0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173478409917:android:af81a52c15626aaa3b29d4",
+        "android_client_info": {
+          "package_name": "com.inflexionlabs.adminringtoner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173478409917-937aoiv8fjrukc87el35nmqlumau72lk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGvNwzeX2NTaKAj2bT1u-UHvdSEbTsOHI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173478409917-937aoiv8fjrukc87el35nmqlumau72lk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173478409917:android:aef7b97583df9fec3b29d4",
+        "android_client_info": {
+          "package_name": "com.inflexionlabs.ringtoner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173478409917-937aoiv8fjrukc87el35nmqlumau72lk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGvNwzeX2NTaKAj2bT1u-UHvdSEbTsOHI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173478409917-937aoiv8fjrukc87el35nmqlumau72lk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

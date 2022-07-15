@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/aboutLayout"
+    android:orientation="vertical"
+    tools:context=".activities.AboutActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarAbout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/primaryTextColor"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:fontFamily="@font/ubuntu_regular"
+        android:textColor="@color/primaryColor"
+        android:letterSpacing="0.02"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:textSize="45sp"
+        android:text="@string/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:fontFamily="@font/ubuntu_regular"
+        android:textColor="@color/primaryColor"
+        android:letterSpacing="0.02"
+        android:layout_margin="18dp"
+        android:textSize="16sp"
+        android:text="@string/app_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:fontFamily="@font/ubuntu_regular"
+        android:textColor="#EB1D36"
+        android:letterSpacing="0.02"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:textSize="35sp"
+        android:text="@string/developer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:fontFamily="@font/ubuntu_regular"
+        android:textColor="@color/primaryColor"
+        android:letterSpacing="0.02"
+        android:layout_margin="18dp"
+        android:textSize="16sp"
+        android:text="@string/developer_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:hapticFeedbackEnabled="true"
+        android:id="@+id/privacyPolicyText"
+        android:fontFamily="@font/ubuntu_regular"
+        android:textColor="@color/primaryColor"
+        android:letterSpacing="0.02"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:textSize="25sp"
+        android:text="@string/privacy_policy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:hapticFeedbackEnabled="true"
+        android:id="@+id/haveFeedbackText"
+        android:fontFamily="@font/ubuntu_regular"
+        android:textColor="@color/primaryColor"
+        android:letterSpacing="0.02"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:textSize="25sp"
+        android:text="@string/have_a_feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

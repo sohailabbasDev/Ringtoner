@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Ringtoner</string>
+    <string name="ringtoner_tag_name">RINGTONER</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="favourites_text">Favourites</string>
+    <string name="terms_text">Terms of use</string>
+    <string name="privacy_text">Privacy policy</string>
+    <string name="rate_us_text">Rate us</string>
+    <string name="more_apps_text">More apps</string>
+    <string name="share_text">Share app</string>
+    <string name="version_text">Version 1.0</string>
+    <string name="categories">Categories</string>
+    <string name="content_play">playButton</string>
+    <string name="content_favourite">favouriteButton</string>
+    <string name="content_rightArrow">rightArrow</string>
+    <string name="no_favourites_yet">No favourites yet!</string>
+    <string name="set_as_ringtone">Set as ringtone</string>
+    <string name="set_as_alarm_tone">Set as alarm tone</string>
+    <string name="set_as_notification_sound">Set as notification tone</string>
+    <string name="set_as_contact_tone">Set as contact tone</string>
+    <string name="download">Download</string>
+    <string name="cont_previous_button">previous</string>
+    <string name="cont_play_button">play</string>
+    <string name="cont_next_button">next</string>
+    <string name="no_data_found">No data found</string>
+    <string name="back_online">Back online</string>
+    <string name="no_connection">No internet connected</string>
+    <string name="downloaded_text">Downloaded</string>
+    <string name="ringtone_set_text">Ringtone set</string>
+    <string name="alarm_tone_set">Alarm tone set</string>
+    <string name="notif_tone_set">Notification tone set</string>
+    <string name="about_us">About</string>
+    <string name="app_description">Ringtoner is created to provide free ringtones which are customised and of various categories, you can set a ringtone, alarm ringtone, notification ringtone and contact ringtone as well as download the preferred ringtone.</string>
+    <string name="developer">Developer</string>
+    <string name="developer_info">Ringtoner is developed and published by inflexion labs, we develop android applications which are useful and fun to use.</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="have_a_feedback">Have a feedback, tell us?</string>
+</resources>

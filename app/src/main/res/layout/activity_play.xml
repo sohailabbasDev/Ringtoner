@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.PlayActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarPlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/primaryTextColor"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <CheckBox
+            android:id="@+id/favouriteToolbarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="4dp"
+            android:button="@drawable/selector_favourites"
+            app:useMaterialThemeColors="false"
+            android:contentDescription="@string/favourites_text" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_margin="4dp"
+        android:id="@+id/playLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/nameLayout"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarPlay">
+
+        <TextView
+            android:id="@+id/songTextView"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="16dp"
+            android:letterSpacing="0.04"
+            android:textColor="@color/primaryDarkColor"
+            android:fontFamily="@font/ubuntu_regular"
+            android:gravity="center"
+            android:textSize="32sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:contentDescription="@string/cont_previous_button"
+                android:id="@+id/previousButton"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="24dp"
+                android:background="@drawable/ic_baseline_skip_previous_24"
+                android:layout_width="60dp"
+                android:layout_height="60dp"/>
+
+            <ImageButton
+                android:contentDescription="@string/cont_play_button"
+                android:id="@+id/playButton"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/ic_baseline_play_circle_filled_24"
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+
+
+            <ImageButton
+                android:contentDescription="@string/cont_next_button"
+                android:id="@+id/nextButton"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="24dp"
+                android:background="@drawable/ic_baseline_skip_next_24"
+                android:layout_width="60dp"
+                android:layout_height="60dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="12dp"
+        android:id="@+id/nameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playLinearLayout">
+
+        <androidx.cardview.widget.CardView
+            android:hapticFeedbackEnabled="true"
+            android:id="@+id/ringCard"
+            app:cardElevation="0dp"
+            android:layout_margin="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ProgressBar
+                    android:id="@+id/ringProgress"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@+id/setAsRingtone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"/>
+
+                <ImageView
+                    android:layout_margin="12dp"
+                    android:id="@+id/callImage"
+                    app:layout_constraintEnd_toStartOf="@+id/setAsRingtone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@drawable/ic_baseline_phone_in_talk_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/set_as_ringtone" />
+
+
+                <TextView
+                    android:id="@+id/setAsRingtone"
+                    android:hapticFeedbackEnabled="true"
+                    android:padding="10dp"
+                    android:text="@string/set_as_ringtone"
+                    android:textColor="@color/primaryDarkColor"
+                    android:textSize="24sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/callImage" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:hapticFeedbackEnabled="true"
+            android:id="@+id/alarmCard"
+            app:cardElevation="0dp"
+            android:layout_margin="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ProgressBar
+                    android:id="@+id/alarmProgress"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@+id/setAsAlarm"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"/>
+
+                <ImageView
+                    android:layout_margin="12dp"
+                    android:id="@+id/alarmImage"
+                    app:layout_constraintEnd_toStartOf="@+id/setAsAlarm"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@drawable/ic_baseline_access_alarm_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/set_as_alarm_tone" />
+
+
+                <TextView
+                    android:id="@+id/setAsAlarm"
+                    android:hapticFeedbackEnabled="true"
+                    android:padding="10dp"
+                    android:text="@string/set_as_alarm_tone"
+                    android:textColor="@color/primaryDarkColor"
+                    android:textSize="24sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/alarmImage"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:hapticFeedbackEnabled="true"
+            android:id="@+id/notificationCard"
+            app:cardElevation="0dp"
+            android:layout_margin="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ProgressBar
+                    android:id="@+id/notProgress"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@+id/setAsNotification"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"/>
+
+                <ImageView
+                    android:layout_margin="12dp"
+                    android:id="@+id/notificationImage"
+                    app:layout_constraintEnd_toStartOf="@+id/setAsNotification"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@drawable/ic_baseline_notifications_active_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/set_as_notification_sound" />
+
+
+                <TextView
+                    android:id="@+id/setAsNotification"
+                    android:hapticFeedbackEnabled="true"
+                    android:padding="10dp"
+                    android:text="@string/set_as_notification_sound"
+                    android:textColor="@color/primaryDarkColor"
+                    android:textSize="24sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/notificationImage" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:hapticFeedbackEnabled="true"
+            android:id="@+id/contactCard"
+            app:cardElevation="0dp"
+            android:layout_margin="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ProgressBar
+                    android:id="@+id/contactProgress"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@+id/setAsContactTone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"/>
+
+                <ImageView
+                    android:layout_margin="12dp"
+                    android:id="@+id/contactImage"
+                    app:layout_constraintEnd_toStartOf="@+id/setAsContactTone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@drawable/ic_baseline_contacts_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/set_as_contact_tone" />
+
+
+                <TextView
+                    android:id="@+id/setAsContactTone"
+                    android:hapticFeedbackEnabled="true"
+                    android:padding="10dp"
+                    android:text="@string/set_as_contact_tone"
+                    android:textColor="@color/primaryDarkColor"
+                    android:textSize="24sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/contactImage" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:hapticFeedbackEnabled="true"
+            android:id="@+id/downloadCard"
+            app:cardElevation="0dp"
+            android:layout_margin="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ProgressBar
+                    android:id="@+id/downloadProgress"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@+id/downloadText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"/>
+
+                <ImageView
+                    android:layout_margin="12dp"
+                    android:id="@+id/downloadImage"
+                    app:layout_constraintEnd_toStartOf="@+id/downloadText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@drawable/ic_baseline_download_24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/download" />
+
+
+                <TextView
+                    android:id="@+id/downloadText"
+                    android:hapticFeedbackEnabled="true"
+                    android:padding="10dp"
+                    android:text="@string/download"
+                    android:textColor="@color/primaryDarkColor"
+                    android:drawablePadding="16dp"
+                    android:textSize="24sp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/downloadImage"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
