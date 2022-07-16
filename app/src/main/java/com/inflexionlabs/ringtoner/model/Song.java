@@ -9,12 +9,6 @@ public class Song {
     public Song() {
     }
 
-    public Song(String name, String uri, String category) {
-        this.name = name;
-        this.uri = uri;
-        this.category = category;
-    }
-
     public String getName() {
         return name;
     }

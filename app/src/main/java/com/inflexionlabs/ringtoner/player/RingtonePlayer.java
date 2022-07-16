@@ -4,7 +4,6 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Looper;
-import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -28,13 +27,14 @@ public class RingtonePlayer {
         this.onPrepareListener.completed(false);
 
         executorService.execute(()->{
-
-            mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             try {
+                mediaPlayer.reset();
                 mediaPlayer.setDataSource(url);
+                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 mediaPlayer.prepareAsync();
-            } catch (IOException | IllegalStateException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
+//                Log.d("AD", "playWithDataSource: ");
             }
 
             mediaPlayer.setOnCompletionListener(mediaPlayer1 -> {
@@ -54,8 +54,7 @@ public class RingtonePlayer {
         if (mediaPlayer.isPlaying()){
             mediaPlayer.stop();
         }
-        mediaPlayer.reset();
-        if (this.onPrepareListener != null) onPrepareListener.onNext(true);
+        if (this.onPrepareListener != null) onPrepareListener.onNext();
     }
 
     public boolean isPlaying() {
@@ -65,7 +64,7 @@ public class RingtonePlayer {
     public interface OnPrepareListener{
         void isPreparing(boolean isPreparing);
         void completed(boolean completed);
-        void onNext(boolean onNext);
+        void onNext();
     }
 
     public void destroy(){

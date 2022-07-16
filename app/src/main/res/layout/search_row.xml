@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="4dp"
@@ -7,7 +8,7 @@
     android:elevation="12dp"
     android:id="@+id/searchSongRowCardView"
     app:cardBackgroundColor="@color/primaryTextColor"
-    android:layout_height="58dp">
+    android:layout_height="60dp">
 
     <ProgressBar
         android:id="@+id/songSearchProgress"
@@ -24,11 +25,12 @@
 
         <ImageButton
             android:id="@+id/searchImageButton"
-            android:layout_margin="6dp"
-            android:layout_width="46dp"
+            android:layout_width="48dp"
             android:layout_height="match_parent"
+            android:layout_margin="6dp"
             android:background="@drawable/ic_baseline_play_circle_outline_24"
-            android:contentDescription="@string/content_play" />
+            android:contentDescription="@string/content_play"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:layout_weight="1"
@@ -46,11 +48,12 @@
 
         <ImageButton
             android:id="@+id/searchArrowButton"
-            android:layout_gravity="center"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_gravity="center"
             android:background="@drawable/ic_baseline_keyboard_arrow_right_24"
-            android:contentDescription="@string/content_rightArrow" />
+            android:contentDescription="@string/content_rightArrow"
+            tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
 

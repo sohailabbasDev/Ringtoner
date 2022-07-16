@@ -6,13 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.inflexionlabs.ringtoner.R;
 import com.inflexionlabs.ringtoner.adapters.SongsCategoryAdapter;
 import com.inflexionlabs.ringtoner.player.RingtonePlayer;
@@ -68,7 +66,7 @@ public class CategoryActivity extends AppCompatActivity implements SongsCategory
 
         appViewModel.getCategorySongData(categoryName).observe(this, arrayList -> songsCategoryAdapter.notifyDataSetChanged());
 
-        songsCategoryAdapter = new SongsCategoryAdapter(appViewModel.getCategorySongData(categoryName).getValue(),this,this,Util.FAVOURITE_STRING_ARRAYLIST);
+        songsCategoryAdapter = new SongsCategoryAdapter(appViewModel.getCategorySongData(categoryName).getValue(),this,Util.FAVOURITE_STRING_ARRAYLIST);
         cRecyclerView.setAdapter(songsCategoryAdapter);
     }
 
@@ -109,15 +107,16 @@ public class CategoryActivity extends AppCompatActivity implements SongsCategory
                 CheckBox checkBox = view.findViewById(R.id.songsFavouriteButton);
                 if (checkBox.isChecked()){
                     favViewModel.insert(favourite);
-                    Toast.makeText(this,Util.ADDED_TO_FAVOURITES, Toast.LENGTH_SHORT).show();
+                    Util.showToast(this, Util.ADDED_TO_FAVOURITES);
                 }else{
                     favViewModel.delete(favourite.getText());
-                    Toast.makeText(this,Util.REMOVE_FROM_FAVOURITES, Toast.LENGTH_SHORT).show();
+                    Util.showToast(this, Util.REMOVE_FROM_FAVOURITES);
+
                 }
             }else if (view == view.findViewById(R.id.songsArrowButton)){
                 Intent intent = new Intent(this, PlayActivity.class);
                 intent.putExtra(Util.POSITION,position);
-                intent.putExtra("code",categoryName);
+                intent.putExtra(Util.CODE_CATEGORY,categoryName);
                 intent.putExtra(Util.CATEGORY_NAME_TEXT,song.getName());
                 intent.putExtra(Util.CATEGORY_URL,song.getUri());
                 startActivity(intent);
@@ -146,7 +145,7 @@ public class CategoryActivity extends AppCompatActivity implements SongsCategory
             }
 
             @Override
-            public void onNext(boolean onNext) {
+            public void onNext() {
                 holder.itemView.findViewById(R.id.playImageButton).setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_play_circle_outline_24,null));
                 holder.itemView.findViewById(R.id.songProgress).setVisibility(View.GONE);
                 holder.itemView.findViewById(R.id.playImageButton).setVisibility(View.VISIBLE);

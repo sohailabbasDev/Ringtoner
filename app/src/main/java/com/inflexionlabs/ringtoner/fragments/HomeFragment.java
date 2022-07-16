@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
@@ -113,7 +112,7 @@ public class HomeFragment extends Fragment implements CategoriesAdapter.OnCatego
         appViewModel.initSongsData();
         appViewModel.getSongsData().observe(getViewLifecycleOwner(),songs -> ringtonesAdapter.notifyDataSetChanged());
 
-        ringtonesAdapter = new RingtonesAdapter(appViewModel.getSongsData().getValue(),getContext(),this,Util.FAVOURITE_STRING_ARRAYLIST);
+        ringtonesAdapter = new RingtonesAdapter(appViewModel.getSongsData().getValue(),this,Util.FAVOURITE_STRING_ARRAYLIST);
         songRecyclerView.setAdapter(ringtonesAdapter);
 
         ringtonesAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
@@ -174,10 +173,10 @@ public class HomeFragment extends Fragment implements CategoriesAdapter.OnCatego
                 CheckBox checkBox = view.findViewById(R.id.songsFavouriteButton);
                 if (checkBox.isChecked()){
                     favViewModel.insert(favourite);
-                    Toast.makeText(getContext(),Util.ADDED_TO_FAVOURITES, Toast.LENGTH_SHORT).show();
+                    Util.showToast(getContext(), Util.ADDED_TO_FAVOURITES);
                 }else{
                     favViewModel.delete(favourite.getText());
-                    Toast.makeText(getContext(),Util.REMOVE_FROM_FAVOURITES, Toast.LENGTH_SHORT).show();
+                    Util.showToast(getContext(),Util.REMOVE_FROM_FAVOURITES);
                 }
             }else if (view == view.findViewById(R.id.songsArrowButton)){
                 entered = true;
@@ -210,7 +209,7 @@ public class HomeFragment extends Fragment implements CategoriesAdapter.OnCatego
             }
 
             @Override
-            public void onNext(boolean onNext) {
+            public void onNext() {
                 holder.itemView.findViewById(R.id.playImageButton).setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_play_circle_outline_24,null));
                 holder.itemView.findViewById(R.id.songProgress).setVisibility(View.GONE);
                 holder.itemView.findViewById(R.id.playImageButton).setVisibility(View.VISIBLE);

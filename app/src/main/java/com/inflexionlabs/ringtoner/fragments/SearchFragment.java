@@ -121,7 +121,7 @@ public class SearchFragment extends Fragment implements SearchAdapter.OnSearchSo
         appViewModel.getSongsData().observe(getViewLifecycleOwner(),songs -> searchAdapter.notifyDataSetChanged());
 
         //setting up adapter
-        searchAdapter = new SearchAdapter(appViewModel.getSongsData().getValue(),getContext(),this);
+        searchAdapter = new SearchAdapter(appViewModel.getSongsData().getValue(),this);
 
         //attaching adapter to recycler view
         searchRecyclerView.setAdapter(searchAdapter);
@@ -189,7 +189,7 @@ public class SearchFragment extends Fragment implements SearchAdapter.OnSearchSo
             }
 
             @Override
-            public void onNext(boolean onNext) {
+            public void onNext() {
                 holder.itemView.findViewById(R.id.searchImageButton).setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_play_circle_outline_24,null));
                 holder.itemView.findViewById(R.id.songSearchProgress).setVisibility(View.GONE);
                 holder.itemView.findViewById(R.id.searchImageButton).setVisibility(View.VISIBLE);

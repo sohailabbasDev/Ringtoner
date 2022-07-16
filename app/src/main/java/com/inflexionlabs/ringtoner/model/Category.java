@@ -7,7 +7,6 @@ public class Category {
     public Category() {
     }
 
-
     public String getText() {
         return text;
     }

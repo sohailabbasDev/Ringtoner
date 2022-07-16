@@ -1,12 +1,10 @@
 package com.inflexionlabs.ringtoner.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,13 +15,11 @@ import java.util.ArrayList;
 public class SongsCategoryAdapter extends RecyclerView.Adapter<SongsCategoryAdapter.ViewHolder> {
 
     final ArrayList<Song> arrayList;
-    final Context context;
     final OnSongClick onSongClick;
     final ArrayList<String> integerList;
 
-    public SongsCategoryAdapter(ArrayList<Song> arrayList, Context context, OnSongClick onSongClick, ArrayList<String> integerList) {
+    public SongsCategoryAdapter(ArrayList<Song> arrayList, OnSongClick onSongClick, ArrayList<String> integerList) {
         this.arrayList = arrayList;
-        this.context = context;
         this.onSongClick = onSongClick;
         this.integerList = integerList;
     }
@@ -56,7 +52,6 @@ public class SongsCategoryAdapter extends RecyclerView.Adapter<SongsCategoryAdap
         final TextView songText;
         final CheckBox favButton;
         final ImageButton arrowButton;
-        final ProgressBar progressBar;
         final OnSongClick onSongClick;
 
         public ViewHolder(@NonNull View itemView, OnSongClick onSongClick) {
@@ -64,7 +59,6 @@ public class SongsCategoryAdapter extends RecyclerView.Adapter<SongsCategoryAdap
 
             this.onSongClick = onSongClick;
 
-            progressBar = itemView.findViewById(R.id.songProgress);
             playButton = itemView.findViewById(R.id.playImageButton);
             songText = itemView.findViewById(R.id.songsTextView);
             favButton = itemView.findViewById(R.id.songsFavouriteButton);

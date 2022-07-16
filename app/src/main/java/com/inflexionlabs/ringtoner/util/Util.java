@@ -18,6 +18,8 @@ public class Util {
     public static final String ADDED_TO_FAVOURITES = "Added to favourites";
     public static final String REMOVE_FROM_FAVOURITES = "Removed from favourites";
 
+    public static final String CODE_CATEGORY = "code";
+
     public static final String BOOLEAN = "boolean";
 
     public static final int WRITE_SETTINGS_CODE = 1;
@@ -48,8 +50,13 @@ public class Util {
     }
 
 
-    public static void showToast(Context context, String toast){
-        Toast.makeText(context, toast, Toast.LENGTH_SHORT).show();
+    public static void showToast(Context context, String toastString){
+        Toast toast = new Toast(context);
+        toast.cancel();
+        toast.setText(toastString);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.show();
+//        Toast.makeText(context, toastString, Toast.LENGTH_SHORT).show();
     }
 
 }

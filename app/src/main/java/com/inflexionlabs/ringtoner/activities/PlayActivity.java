@@ -230,8 +230,8 @@ public class PlayActivity extends AppCompatActivity {
                     updateCheckBox();
                 });
 
-            }else if(getIntent().hasExtra("code")){
-                category = getIntent().getStringExtra("code");
+            }else if(getIntent().hasExtra(Util.CODE_CATEGORY)){
+                category = getIntent().getStringExtra(Util.CODE_CATEGORY);
                 pos = getIntent().getIntExtra(Util.POSITION,0);
                 song.setName(getIntent().getStringExtra(Util.CATEGORY_NAME_TEXT));
                 song.setUri(getIntent().getStringExtra(Util.CATEGORY_URL));
@@ -316,6 +316,8 @@ public class PlayActivity extends AppCompatActivity {
                         downImage.setVisibility(View.INVISIBLE);
                         downProgress.setVisibility(View.VISIBLE);
 
+                        Toast.makeText(PlayActivity.this,"You can find downloads in your music folder", Toast.LENGTH_LONG).show();
+
                         if (sFile == null){
                             nextButton.setVisibility(View.INVISIBLE);
                             prevButton.setVisibility(View.INVISIBLE);
@@ -333,12 +335,14 @@ public class PlayActivity extends AppCompatActivity {
                                 public void onDownloadFailed(boolean failed) {
                                     if (failed) {
                                         Snackbar.make(findViewById(android.R.id.content), "FAILED!", Snackbar.LENGTH_LONG).show();
+                                        downTextView.setText(R.string.downloaded_text);
                                         downloadText.setClickable(true);
                                     }
                                 }
 
                                 @Override
                                 public void uiChange(boolean done, File file) {
+                                    downTextView.setText(R.string.downloading);
                                     if (done){
                                         downImage.setVisibility(View.VISIBLE);
                                         downProgress.setVisibility(View.GONE);
@@ -1068,7 +1072,7 @@ public class PlayActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNext(boolean onNext) {
+            public void onNext() {
 
             }
         });

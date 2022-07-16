@@ -20,12 +20,6 @@ public class Favourite {
     public Favourite() {
     }
 
-    public Favourite(int id, String text, String url) {
-        this.id = id;
-        this.text = text;
-        this.url = url;
-    }
-
     public int getId() {
         return id;
     }

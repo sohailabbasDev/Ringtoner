@@ -1,12 +1,10 @@
 package com.inflexionlabs.ringtoner.adapters;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,7 +15,6 @@ import java.util.ArrayList;
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
 
     ArrayList<Song> songArrayList;
-    final Context context;
     final OnSearchSongClick onSearchSongClick;
 
     @SuppressLint("NotifyDataSetChanged")
@@ -26,9 +23,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         notifyDataSetChanged();
     }
 
-    public SearchAdapter(ArrayList<Song> songArrayList, Context context, OnSearchSongClick onSearchSongClick) {
+    public SearchAdapter(ArrayList<Song> songArrayList, OnSearchSongClick onSearchSongClick) {
         this.songArrayList = songArrayList;
-        this.context = context;
         this.onSearchSongClick = onSearchSongClick;
     }
 
@@ -58,7 +54,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         final ImageButton playButton;
         final TextView songText;
         final ImageButton arrowButton;
-        final ProgressBar progressBar;
         final OnSearchSongClick onSearchSongClick;
 
         public ViewHolder(@NonNull View itemView, OnSearchSongClick onSearchSongClick) {
@@ -66,7 +61,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
             this.onSearchSongClick = onSearchSongClick;
 
-            progressBar = itemView.findViewById(R.id.songSearchProgress);
             playButton = itemView.findViewById(R.id.searchImageButton);
             songText = itemView.findViewById(R.id.searchTextView);
             arrowButton = itemView.findViewById(R.id.searchArrowButton);

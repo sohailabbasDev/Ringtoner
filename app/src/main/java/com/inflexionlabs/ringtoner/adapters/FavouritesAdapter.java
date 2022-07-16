@@ -1,11 +1,9 @@
 package com.inflexionlabs.ringtoner.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,12 +14,10 @@ import java.util.ArrayList;
 public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.ViewHolder> {
 
     final ArrayList<Favourite> favouriteList;
-    final Context context;
     final OnFavClick onFavClick;
 
-    public FavouritesAdapter(ArrayList<Favourite> favouriteList, Context context, OnFavClick onFavClick) {
+    public FavouritesAdapter(ArrayList<Favourite> favouriteList, OnFavClick onFavClick) {
         this.favouriteList = favouriteList;
-        this.context = context;
         this.onFavClick = onFavClick;
     }
 
@@ -52,7 +48,6 @@ public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.Vi
         final TextView songText;
         final ImageButton deleteButton;
         final ImageButton arrowButton;
-        final ProgressBar progressBar;
 
         final OnFavClick onFavClick;
 
@@ -61,7 +56,7 @@ public class FavouritesAdapter extends RecyclerView.Adapter<FavouritesAdapter.Vi
 
             this.onFavClick = onFavClick;
 
-            progressBar = itemView.findViewById(R.id.favProgress);
+
             playButton = itemView.findViewById(R.id.favImageButton);
             songText = itemView.findViewById(R.id.favTextView);
             deleteButton = itemView.findViewById(R.id.deleteFavouriteButton);

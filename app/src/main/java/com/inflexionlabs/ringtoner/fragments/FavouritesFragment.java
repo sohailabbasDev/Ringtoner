@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.inflexionlabs.ringtoner.activities.PlayActivity;
@@ -91,7 +90,7 @@ public class FavouritesFragment extends Fragment implements FavouritesAdapter.On
             }
         });
 
-        favouritesAdapter = new FavouritesAdapter(mList,getContext(),this);
+        favouritesAdapter = new FavouritesAdapter(mList,this);
         favRecyclerView.setAdapter(favouritesAdapter);
 
         text = view.findViewById(R.id.noFavText);
@@ -125,11 +124,11 @@ public class FavouritesFragment extends Fragment implements FavouritesAdapter.On
             }
 
         }else if(view == view.findViewById(R.id.deleteFavouriteButton)){
-            Toast.makeText(getContext(),"Deleted", Toast.LENGTH_SHORT).show();
-            view.findViewById(R.id.deleteFavouriteButton).setClickable(false);
+            Util.showToast(getContext(),Util.REMOVE_FROM_FAVOURITES);
             favouriteViewModel.delete(favourite.getText());
-            favouritesAdapter.notifyItemRemoved(position);
-            ringtonePlayer.stopPlay();
+            if (ringtonePlayer.isPlaying()){
+                ringtonePlayer.stopPlay();
+            }
         }else if (view == view.findViewById(R.id.favArrowButton)){
             Intent intent = new Intent(getActivity(), PlayActivity.class);
             intent.putExtra(Util.POSITION,position);
@@ -160,7 +159,7 @@ public class FavouritesFragment extends Fragment implements FavouritesAdapter.On
             }
 
             @Override
-            public void onNext(boolean onNext) {
+            public void onNext() {
                 holder.itemView.findViewById(R.id.favImageButton).setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_play_circle_outline_24,null));
                 holder.itemView.findViewById(R.id.favProgress).setVisibility(View.GONE);
                 holder.itemView.findViewById(R.id.favImageButton).setVisibility(View.VISIBLE);

@@ -6,7 +6,6 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -129,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             unregisterReceiver(connectivityReceiver);
         }catch (Exception e){
             e.printStackTrace();
-            Log.d("GG", "unregisterNetReceiver: "+e);
+//            Log.d("GG", "unregisterNetReceiver: "+e);
         }
     }
 
