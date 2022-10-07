@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         firebaseAppCheck.installAppCheckProviderFactory(
                 SafetyNetAppCheckProviderFactory.getInstance());
 
+        //update check
         appUpdateManager = AppUpdateManagerFactory.create(this);
 
         appUpdateManager.getAppUpdateInfo().addOnSuccessListener(appUpdateInfo -> {

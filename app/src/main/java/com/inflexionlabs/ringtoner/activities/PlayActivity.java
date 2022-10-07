@@ -311,110 +311,48 @@ public class PlayActivity extends AppCompatActivity {
 
         downloadText.setOnClickListener(view -> {
             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P){
-                if (checkWritePermission()){
-                    if (Util.isConnected(this)){
-                        downImage.setVisibility(View.INVISIBLE);
-                        downProgress.setVisibility(View.VISIBLE);
 
-                        Toast.makeText(PlayActivity.this,"You can find downloads in your music folder", Toast.LENGTH_LONG).show();
+                if (!checkWritePermission()){
+                    askWritePermission();
+                    return;
+                }
 
-                        if (sFile == null){
-                            nextButton.setVisibility(View.INVISIBLE);
-                            prevButton.setVisibility(View.INVISIBLE);
+                if (!Util.isConnected(this)){
+                    Util.alert(PlayActivity.this);
+                    return;
+                }
 
-                            downloader.downloadFromURl(song.getUri(), song.getName(), new Downloader.DownloadListener() {
-                                @Override
-                                public void onDownloaded(boolean downloaded, File file) {
-                                    if (downloaded) {
-                                        sFile = file;
-                                        Snackbar.make(findViewById(android.R.id.content), "DOWNLOADED!", Snackbar.LENGTH_LONG).show();
-                                    }
-                                }
+                downImage.setVisibility(View.INVISIBLE);
+                downProgress.setVisibility(View.VISIBLE);
 
-                                @Override
-                                public void onDownloadFailed(boolean failed) {
-                                    if (failed) {
-                                        Snackbar.make(findViewById(android.R.id.content), "FAILED!", Snackbar.LENGTH_LONG).show();
-                                        downTextView.setText(R.string.downloaded_text);
-                                        downloadText.setClickable(true);
-                                    }
-                                }
+                Toast.makeText(PlayActivity.this,"You can find downloads in your music folder", Toast.LENGTH_LONG).show();
 
-                                @Override
-                                public void uiChange(boolean done, File file) {
-                                    downTextView.setText(R.string.downloading);
-                                    if (done){
-                                        downImage.setVisibility(View.VISIBLE);
-                                        downProgress.setVisibility(View.GONE);
-                                        downImage.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_file_download_done_24,null));
-                                        downTextView.setText(R.string.downloaded_text);
-                                        downloadText.setClickable(false);
+                if (sFile == null){
+                    nextButton.setVisibility(View.INVISIBLE);
+                    prevButton.setVisibility(View.INVISIBLE);
 
-                                        nextButton.setVisibility(View.VISIBLE);
-                                        prevButton.setVisibility(View.VISIBLE);
-                                    }
-                                }
-                            });
-                        }else{
-                            downImage.setVisibility(View.VISIBLE);
-                            downProgress.setVisibility(View.GONE);
-                            downImage.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_file_download_done_24,null));
-                            downTextView.setText(R.string.downloaded_text);
-                            downloadText.setClickable(false);
-
-                            nextButton.setVisibility(View.VISIBLE);
-                            prevButton.setVisibility(View.VISIBLE);
+                    downloader.downloadFromURl(song.getUri(), song.getName(), new Downloader.DownloadListener() {
+                        @Override
+                        public void onDownloaded(boolean downloaded, File file) {
+                            if (downloaded) {
+                                sFile = file;
+                                Snackbar.make(findViewById(android.R.id.content), "DOWNLOADED!", Snackbar.LENGTH_LONG).show();
+                            }
                         }
 
-                    }else{
-                        Util.alert(PlayActivity.this);
-                    }
-                }else{
-                    askWritePermission();
-                }
-            }else{
-                if (checkWritePermitForLowerSDK()){
-                    if (checkWritePermission()){
-                        if (Util.isConnected(this)){
-                            downImage.setVisibility(View.INVISIBLE);
-                            downProgress.setVisibility(View.VISIBLE);
+                        @Override
+                        public void onDownloadFailed(boolean failed) {
+                            if (failed) {
+                                Snackbar.make(findViewById(android.R.id.content), "FAILED!", Snackbar.LENGTH_LONG).show();
+                                downTextView.setText(R.string.downloaded_text);
+                                downloadText.setClickable(true);
+                            }
+                        }
 
-                            if (sFile == null){
-                                nextButton.setVisibility(View.INVISIBLE);
-                                prevButton.setVisibility(View.INVISIBLE);
-
-                                downloader.downloadFromURl(song.getUri(), song.getName(), new Downloader.DownloadListener() {
-                                    @Override
-                                    public void onDownloaded(boolean downloaded, File file) {
-                                        if (downloaded) {
-                                            sFile = file;
-                                            Snackbar.make(findViewById(android.R.id.content), "DOWNLOADED!", Snackbar.LENGTH_LONG).show();
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onDownloadFailed(boolean failed) {
-                                        if (failed) {
-                                            Snackbar.make(findViewById(android.R.id.content), "FAILED!", Snackbar.LENGTH_LONG).show();
-                                            downloadText.setClickable(true);
-                                        }
-                                    }
-
-                                    @Override
-                                    public void uiChange(boolean done, File file) {
-                                        if (done){
-                                            downImage.setVisibility(View.VISIBLE);
-                                            downProgress.setVisibility(View.GONE);
-                                            downImage.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_file_download_done_24,null));
-                                            downTextView.setText(R.string.downloaded_text);
-                                            downloadText.setClickable(false);
-
-                                            nextButton.setVisibility(View.VISIBLE);
-                                            prevButton.setVisibility(View.VISIBLE);
-                                        }
-                                    }
-                                });
-                            }else{
+                        @Override
+                        public void uiChange(boolean done, File file) {
+                            downTextView.setText(R.string.downloading);
+                            if (done){
                                 downImage.setVisibility(View.VISIBLE);
                                 downProgress.setVisibility(View.GONE);
                                 downImage.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_file_download_done_24,null));
@@ -424,15 +362,82 @@ public class PlayActivity extends AppCompatActivity {
                                 nextButton.setVisibility(View.VISIBLE);
                                 prevButton.setVisibility(View.VISIBLE);
                             }
-
-                        }else{
-                            Util.alert(PlayActivity.this);
                         }
-                    }else {
-                        askWritePermission();
-                    }
+                    });
                 }else{
+                    downImage.setVisibility(View.VISIBLE);
+                    downProgress.setVisibility(View.GONE);
+                    downImage.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_file_download_done_24,null));
+                    downTextView.setText(R.string.downloaded_text);
+                    downloadText.setClickable(false);
+
+                    nextButton.setVisibility(View.VISIBLE);
+                    prevButton.setVisibility(View.VISIBLE);
+                }
+            }else{
+
+                if(!checkWritePermitForLowerSDK()){
                     askWriteExternalPermission();
+                    return;
+                }
+
+                if (!checkWritePermission()){
+                    askWritePermission();
+                    return;
+                }
+
+                if (!Util.isConnected(this)){
+                    Util.alert(PlayActivity.this);
+                    return;
+                }
+
+                downImage.setVisibility(View.INVISIBLE);
+                downProgress.setVisibility(View.VISIBLE);
+
+                if (sFile == null){
+                    nextButton.setVisibility(View.INVISIBLE);
+                    prevButton.setVisibility(View.INVISIBLE);
+
+                    downloader.downloadFromURl(song.getUri(), song.getName(), new Downloader.DownloadListener() {
+                        @Override
+                        public void onDownloaded(boolean downloaded, File file) {
+                            if (downloaded) {
+                                sFile = file;
+                                Snackbar.make(findViewById(android.R.id.content), "DOWNLOADED!", Snackbar.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onDownloadFailed(boolean failed) {
+                            if (failed) {
+                                Snackbar.make(findViewById(android.R.id.content), "FAILED!", Snackbar.LENGTH_LONG).show();
+                                downloadText.setClickable(true);
+                            }
+                        }
+
+                        @Override
+                        public void uiChange(boolean done, File file) {
+                            if (done){
+                                downImage.setVisibility(View.VISIBLE);
+                                downProgress.setVisibility(View.GONE);
+                                downImage.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_file_download_done_24,null));
+                                downTextView.setText(R.string.downloaded_text);
+                                downloadText.setClickable(false);
+
+                                nextButton.setVisibility(View.VISIBLE);
+                                prevButton.setVisibility(View.VISIBLE);
+                            }
+                        }
+                    });
+                }else{
+                    downImage.setVisibility(View.VISIBLE);
+                    downProgress.setVisibility(View.GONE);
+                    downImage.setBackground(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_file_download_done_24,null));
+                    downTextView.setText(R.string.downloaded_text);
+                    downloadText.setClickable(false);
+
+                    nextButton.setVisibility(View.VISIBLE);
+                    prevButton.setVisibility(View.VISIBLE);
                 }
             }
         });
